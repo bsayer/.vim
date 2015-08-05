@@ -10,6 +10,7 @@ endif
 set background=light
 colorscheme solarized
 
+" Vim-Airline Settings
 let g:airline_powerline_fonts = 1
 set laststatus=2
 
@@ -21,6 +22,7 @@ let g:ctrlp_cmd = 'CtrlP'
 set wildignore+=*/tmp/*,*.git,*.so,*.swp,*.zip
 
 set number
+set cursorline
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -40,6 +42,8 @@ set shiftround
 if has('mouse')
   set mouse=a
 endif
+
+:nnoremap <F12> :buffers<CR>:buffer<Space>
 
 " phpqa settings
 "
