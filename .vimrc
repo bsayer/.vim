@@ -1,6 +1,31 @@
-set nocompatible
+filetype off
 execute pathogen#infect()
 call pathogen#helptags()
+
+set nocompatible
+filetype plugin indent on
+let mapleader = ","
+set modelines=0
+set encoding=utf-8
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set relativenumber
+set cursorline
+set noshowmode
+set ttyfast
+set scrolloff=3
+set incsearch
+set showmatch
+set hlsearch
+" Clear highlights
+nnoremap <leader><space> :noh<cr>
+" Goto paired brace with tab key
+nnoremap <tab> %
+vnoremap <tab> %
+" Vertical split and change to it
+nnoremap <leader>w <C-w>v<C-w>l
+set formatoptions=qrn1
 
 " Switch syntax highlighting on, when the terminal has colors
 if &t_Co > 2 || has("gui_running")
@@ -18,28 +43,22 @@ let g:airline#extensions#tabline#enabled = 1
 " Load CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 "let g:ctrlp_map = '<c-p>'
-"let g:ctrlp_map = 'π'
-let g:ctrlp_map = '<Leader>p'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map='<Leader>p'
+let g:ctrlp_cmd='CtrlP'
 set wildignore+=*/tmp/*,*.git,*.so,*.swp,*.zip
 
-set number
-set cursorline
-set noshowmode
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
 set colorcolumn=80,120
 set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
 
 " tab settings
 set tabstop=3
 set softtabstop=3
-set sw=3
+set shiftwidth=3
 set shiftround
 
 if has('mouse')
