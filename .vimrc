@@ -13,16 +13,19 @@ colorscheme solarized
 " Vim-Airline Settings
 let g:airline_powerline_fonts = 1
 set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
 
 " Load CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 "let g:ctrlp_map = '<c-p>'
-let g:ctrlp_map = 'π'
+"let g:ctrlp_map = 'π'
+let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 set wildignore+=*/tmp/*,*.git,*.so,*.swp,*.zip
 
 set number
 set cursorline
+set noshowmode
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
