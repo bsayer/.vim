@@ -1,4 +1,8 @@
 filetype off
+
+" To disable a plugin, add it's bundle name to the following list
+let g:pathogen_disabled = []
+
 execute pathogen#infect()
 call pathogen#helptags()
 
@@ -116,3 +120,11 @@ else
   set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
+
+" Toggle between absolute and relative line numbering
+nnoremap <Leader>n :call NumberToggle()<cr>
+
+function! NumberToggle()
+	set norelativenumber!
+	set number
+endfunc
