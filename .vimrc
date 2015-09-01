@@ -1,47 +1,39 @@
 filetype off
-
-" To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = []
-
 execute pathogen#infect()
 call pathogen#helptags()
 
 set nocompatible
-filetype plugin indent on
 let mapleader = ","
 set modelines=0
-set encoding=utf-8
-set wildmenu
 set wildmode=list:longest
 set visualbell
+set number
 set relativenumber
-set cursorline
+set tags=./tags;
+"set cursorline
 set noshowmode
 set ttyfast
-set scrolloff=3
-set incsearch
 set showmatch
 set hlsearch
-" Clear highlights
-nnoremap <leader><space> :noh<cr>
+" Escape insert mode with jk
+inoremap jk <ESC>
+" Deal with trailing whitespace
+match ErrorMsg '\s\+$'
+nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 " Goto paired brace with tab key
 nnoremap <tab> %
 vnoremap <tab> %
 " Vertical split and change to it
 nnoremap <leader>w <C-w>v<C-w>l
 set formatoptions=qrn1
-
-" Switch syntax highlighting on, when the terminal has colors
-if &t_Co > 2 || has("gui_running")
-  syntax on
-endif
+" Disable Ex mode
+nnoremap Q <nop>
 
 set background=light
 colorscheme solarized
 
 " Vim-Airline Settings
 let g:airline_powerline_fonts = 1
-set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 
 " Load CtrlP
@@ -51,13 +43,7 @@ let g:ctrlp_map='<Leader>p'
 let g:ctrlp_cmd='CtrlP'
 set wildignore+=*/tmp/*,*.git,*.so,*.swp,*.zip
 
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-set history=50		" keep 50 lines of command line history
 set colorcolumn=80,120
-set showcmd		" display incomplete commands
 
 " tab settings
 set tabstop=3
@@ -70,6 +56,15 @@ if has('mouse')
 endif
 
 :nnoremap <F12> :buffers<CR>:buffer<Space>
+
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END
+
+" Needed to recognize .md as markdown in older Vim versions
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 " phpqa settings
 "
@@ -88,13 +83,6 @@ let g:phpqa_open_loc = 1
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
-
-  " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
   au!
 
@@ -115,16 +103,4 @@ if has("autocmd")
 
   augroup END
 
-else
-
-  set autoindent		" always set autoindenting on
-
 endif " has("autocmd")
-
-" Toggle between absolute and relative line numbering
-nnoremap <Leader>n :call NumberToggle()<cr>
-
-function! NumberToggle()
-	set norelativenumber!
-	set number
-endfunc
