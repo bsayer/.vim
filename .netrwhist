@@ -1,7 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/bsayer/src/medhub/git-medhub/.git/hooks'
 let g:netrw_dirhist_2='/Users/bsayer/src/tmp'
 let g:netrw_dirhist_3='/Users/bsayer/Downloads/solarized'
 let g:netrw_dirhist_4='sftp://mhsupport@web1.blue.medhub.com//'
 let g:netrw_dirhist_5='/private/var/mail'
+let g:netrw_dirhist_6='/Users/bsayer/src/medhub/git-medhub/app/config'
+let g:netrw_dirhist_7='/Users/bsayer/src/medhub/git-medhub/app'
+let g:netrw_dirhist_8='/usr/include/php'
+let g:netrw_dirhist_9='/usr/include'
